@@ -208,6 +208,36 @@ OR
 python3 -m consumers.duckdb_consumer_case.py
 ```
 
+## Custom Consumer – Karto
+
+This custom consumer reads **one message at a time** from the live JSON file (`project_live.json`) produced by the main producer and stores processed insights in SQLite.
+
+### Insight Captured
+- Message categorization (`category`)
+- Author (`author`)
+- Timestamp (`timestamp`)
+- Sentiment (`sentiment`)
+
+This allows analyzing message trends, categorization, and sentiment tracking.
+
+### Running Karto’s Consumer
+
+1. **Activate your virtual environment**  
+
+```bash
+# Windows
+.\.venv\Scripts\Activate.ps1
+
+# Mac/Linux
+source .venv/bin/activate
+
+# Windows
+py -m consumers.consumer_karto
+
+# Mac/Linux
+python3 -m consumers.consumer_karto
+
+```
 ---
 
 ## Review the Project Code
