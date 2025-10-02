@@ -368,6 +368,7 @@ This allows us to explore **trends, author activity, and sentiment tracking** di
 - Explore results using **SQLite/DuckDB queries**.  
 - Compare standard consumers vs. custom consumer.  
 - Reinforce concepts of **sources, sinks, emitters, consumers**.  
+- The custom_consumer_karto.py reads JSON messages from the Kafka topic in real-time, counts messages per category using a dictionary, stores results in SQLite, and updates a dynamic Matplotlib bar chart showing live category counts. Each message is categorized and tracked, allowing immediate insight into which categories are most active.The custom_consumer_karto.py reads JSON messages from the Kafka topic in real-time, counts messages per category using a dictionary, stores results in SQLite, and updates a dynamic Matplotlib bar chart showing live category counts. Each message is categorized and tracked, allowing immediate insight into which categories are most active.
 
 ---
 
@@ -379,20 +380,36 @@ Follow setup steps from previous modules:
 - Kafka running (see [buzzline-02-case setup](https://github.com/denisecase/buzzline-02-case))  
 - Virtual environment & dependencies from `requirements.txt`  
 
+---
 ### 2. Run Producer
 ```bash
 # Windows
 .\.venv\Scripts\Activate.ps1
-py -m producers.producer_karto
+py -m producers.custom_producer_karto
 
 # Mac/Linux
 source .venv/bin/activate
-python3 -m producers.producer_karto
-
-
-
-
+python3 -m producers.custom_producer_karto
+```
 ---
+
+### 3. Run Consumers
+```bash
+# Windows
+.\.venv\Scripts\Activate.ps1
+py -m producers.custom_consumer_karto
+
+# Mac/Linux
+source .venv/bin/activate
+python3 -m producers.custom_consumer_karto
+```
+### 4. Setup
+The custom consumer provides a live bar chart showing counts per category:
+- X-axis: Message category (info, warning, error, etc.)
+- Y-axis: Count of messages
+- Color: Differentiates categories
+- Updates dynamically as new messages arrive
+
 
 ## How To Stop a Continuous Process
 
