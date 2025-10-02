@@ -325,6 +325,73 @@ duckdb data/buzz.duckdb -c "SELECT category, AVG(sentiment) FROM streamed_messag
 
 ```
 
+
+
+
+
+# buzzline-06-karto
+
+Nearly every streaming analytics system stores processed data somewhere for further analysis, historical reference, or integration with BI tools.  
+
+In this project (**Week 6**), we continue building on previous buzzline projects and extend the pipeline with **custom consumers** and **analytic insights**.  
+
+We stream data into **SQLite** and **DuckDB**, and add a **new custom consumer (Karto)** to perform real-time categorization and sentiment analysis.  
+This allows us to explore **trends, author activity, and sentiment tracking** directly from the stream.  
+
+---
+
+## Core Components
+
+- **Producer**  
+  - Writes messages into multiple sinks:  
+    - file  
+    - Kafka topic (set in `.env`)  
+    - SQLite database  
+    - DuckDB database  
+
+- **Consumers**  
+  - File Consumer – reads messages from live JSON file.  
+  - Kafka Consumer – subscribes to Kafka topic.  
+  - SQLite Consumer – reads relational records.  
+  - DuckDB Consumer – performs live analytics.  
+  - **Custom Consumer – Karto**:  
+    - Reads messages from `project_live.json`.  
+    - Captures: `category`, `author`, `timestamp`, `sentiment`.  
+    - Stores enriched insights in SQLite for later analysis.  
+
+---
+
+## Week 6 Focus
+
+- Add **custom consumer (consumer_karto.py)** for extended analytics.  
+- Demonstrate **trend analysis, categorization, and sentiment tracking**.  
+- Explore results using **SQLite/DuckDB queries**.  
+- Compare standard consumers vs. custom consumer.  
+- Reinforce concepts of **sources, sinks, emitters, consumers**.  
+
+---
+
+## Quickstart
+
+### 1. Setup
+Follow setup steps from previous modules:
+- Python 3.11  
+- Kafka running (see [buzzline-02-case setup](https://github.com/denisecase/buzzline-02-case))  
+- Virtual environment & dependencies from `requirements.txt`  
+
+### 2. Run Producer
+```bash
+# Windows
+.\.venv\Scripts\Activate.ps1
+py -m producers.producer_karto
+
+# Mac/Linux
+source .venv/bin/activate
+python3 -m producers.producer_karto
+
+
+
+
 ---
 
 ## How To Stop a Continuous Process
