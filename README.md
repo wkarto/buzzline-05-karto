@@ -405,10 +405,12 @@ python3 -m producers.custom_consumer_karto
 ```
 ### 4. Setup
 The custom consumer provides a live bar chart showing counts per category:
-- X-axis: Message category (info, warning, error, etc.)
+- X-axis: Message category
 - Y-axis: Count of messages
-- Color: Differentiates categories
 - Updates dynamically as new messages arrive
+
+#### Results
+![Visualization](screenshot/bar_chart.png)
 
 
 ## How To Stop a Continuous Process
