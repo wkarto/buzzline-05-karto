@@ -120,9 +120,14 @@ This will safely terminate the script and close the charts.
 ### 7.1 Bar Chart: Category Counts
 ![Visualization](screenshot/bar_chart.png)
 
-### 7.1 Dashboard
+### 7.2 Dashboard
 ![Dashboard](screenshot/dashboard.png)
 
+### 7.3 Producer Running
+![Dashboard](screenshot/producer.png)
+
+### 7.4 Consumer Running
+![Dashboard](screenshot/consumer.png)
 
 ---
 
